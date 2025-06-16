@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>python.new</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>PYTHON.NEW</h1>
+        <div id="connection-status" style="text-align: center; margin-bottom: 10px; font-weight: bold;">
+            Проверка подключения...
+        </div>
+        <div class="output-container">
+            <div class="code-output">
+                <h2>Сгенерированный код:</h2>
+                <pre id="output"></pre>
+            </div>
+            <div class="info-output">
+                <div class="explanation-output">
+                    <h2>Объяснение:</h2>
+                    <p id="explanation"></p>
+                </div>
+                <div class="resources-output">
+                    <h2>Источники полезной информации:</h2>
+                    <ul id="resources"></ul>
+                </div>
+            </div>
+        </div>
+        <form id="generateForm" autocomplete="off" onsubmit="event.preventDefault(); generateCode();">
+          <div style="display: flex; align-items: center; gap: 12px; width: 100%;">
+            <input type="text" id="prompt" name="prompt"
+                   style="flex: 1; height: 48px; font-size: 18px; padding: 0 16px; border: 1px solid #fff; background: #222; color: #fff; border-radius: 6px;">
+            <button id="historyBtn" type="button"
+                    style="display: flex; align-items: center; justify-content: center; background: #222; border: none; cursor: pointer; height: 48px; width: 48px; border-radius: 6px;">
+              <img src="/static/elements/История.png" alt="История" style="width: 32px; height: 32px; display: block; filter: brightness(0) invert(1);">
+            </button>
+            <button type="submit"
+                    style="height: 48px; min-width: 140px; font-size: 18px; background: #007bff; color: #fff; border: none; border-radius: 6px; padding: 0 24px; cursor: pointer;">
+                Сгенерировать
+            </button>
+          </div>
+          <div id="loading" style="display: none;">Загрузка...</div>
+        </form>
+    </div>
+    <div id="historyModal" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:1000; align-items:center; justify-content:center;">
+      <div style="background:#222; color:#fff; padding:32px; border-radius:12px; min-width:500px; max-width:95vw; max-height:85vh; overflow:auto; margin:auto; display:flex; flex-direction:column; position:relative;">
+        <h2 style="text-align:center; margin-bottom: 24px;">История запросов</h2>
+        <ul id="historyList" style="list-style:none; padding:0; margin:0; font-size:18px;"></ul>
+        <div id="historyDetails" style="margin-top:24px; display:none; background:#181818; border-radius:8px; padding:16px;"></div>
+        <div style="display:flex; justify-content:flex-end; align-items:flex-end; flex:1;">
+          <button onclick="closeHistory()" style="margin-top:24px;">Закрыть</button>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

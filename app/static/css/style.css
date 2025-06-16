@@ -1,0 +1,250 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* Темный фон */
+    color: #e0e0e0; /* Светлый текст */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Убираем вертикальную прокрутку */
+}
+
+.container {
+    width: 95%;
+    max-width: 1400px;
+    background: #1e1e1e; /* Темный фон контейнера */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh; /* Контейнер занимает всю высоту экрана */
+    overflow: hidden; /* Убираем прокрутку внутри контейнера */
+}
+
+h1 {
+    text-align: center;
+    color: #4caf50; /* Зеленый цвет заголовка */
+    margin-bottom: 1rem;
+    font-size: 2.5rem; /* Увеличенный размер текста */
+    flex-shrink: 0; /* Заголовок не сжимается */
+}
+
+/* Вывод результата */
+.output-container {
+    display: flex;
+    gap: 20px;
+    flex: 1; /* Занимает оставшееся пространство */
+    overflow: hidden; /* Убираем прокрутку */
+}
+
+.code-output {
+    flex: 1;
+    min-width: 300px;
+    max-width: 100%;
+    padding: 15px;
+    background: #2b2b2b; /* Темный фон для поля */
+    color: #e0e0e0; /* Светлый текст */
+    border: 1px solid #444; /* Темная рамка */
+    border-radius: 10px;
+    overflow: auto; /* Прокрутка только если код слишком длинный */
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Для размещения кнопки копирования */
+}
+
+/* Стиль для программного кода */
+pre {
+    background: #2b2b2b; /* Темный фон для кода */
+    color: #dcdcdc; /* Светлый текст */
+    font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт */
+    font-size: 1.6rem; /* Увеличенный размер текста */
+    line-height: 1.8; /* Увеличенный межстрочный интервал */
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto; /* Горизонтальная прокрутка для длинных строк */
+    white-space: pre-wrap; /* Перенос строк, если они слишком длинные */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Внутренняя тень для эффекта */
+}
+
+/* Кнопка копирования */
+.code-header {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+#copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Кнопка копирования */
+#copy-btn img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1) brightness(2); /* Гарантирует, что иконка всегда белая */
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#copy-btn:hover img {
+    transform: scale(1.1); /* Увеличение иконки при наведении */
+    filter: invert(1) brightness(2); /* Убедимся, что цвет остается белым даже при наведении */
+}
+
+/* Сообщение об успешном копировании */
+.copy-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: none; /* Скрыто по умолчанию */
+    z-index: 20;
+}
+
+/* Поля "Объяснение" и "Источники полезной информации" */
+.info-output {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.explanation-output, .resources-output {
+    flex: 1; /* Поля занимают равное пространство */
+    padding: 15px;
+    background: #2b2b2b; /* Темный фон */
+    color: #e0e0e0; /* Светлый текст */
+    border: 1px solid #444; /* Темная рамка */
+    border-radius: 10px;
+    overflow: auto; /* Прокрутка только если содержимое превышает размер */
+    font-size: 1.2rem; /* Увеличенный размер текста */
+    line-height: 1.5; /* Увеличенный межстрочный интервал */
+    text-decoration: none;
+}
+
+#resources a:link, a:visited, a:hover, a:focus, a:active {
+    color: #e0e0e0; /* В указанных состояниях гиперссылка будет представлена этим цветом */
+    text-decoration: none; /* И мы исключим подчеркивание */
+}
+
+/* Поле ввода и кнопка */
+.input-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0; /* Поле ввода и кнопка не сжимаются */
+}
+
+textarea {
+    flex: 1; /* Поле ввода занимает все доступное пространство */
+    height: 100px; /* Увеличенная высота */
+    padding: 10px;
+    font-size: 1rem; /* Увеличенный размер текста */
+    color: #e0e0e0; /* Светлый текст */
+    background: #2b2b2b; /* Темный фон */
+    border: 1px solid #444; /* Темная рамка */
+    border-radius: 5px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+textarea::placeholder {
+    color: #aaa; /* Светлый текст для плейсхолдера */
+}
+
+button {
+    flex-shrink: 0; /* Кнопка не сжимается */
+    padding: 10px 20px;
+    font-size: 1rem; /* Увеличенный размер текста */
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#loading {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #007BFF;
+    text-align: center;
+}
+
+#connection-status {
+    font-size: 1rem;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-block;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    textarea {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+
+    .output-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .code-output {
+        height: 50%; /* Поля занимают половину высоты */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    textarea {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    .code-output {
+        height: 50%; /* Поля занимают половину высоты */
+    }
+}
